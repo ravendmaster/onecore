@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ravendmaster.onecore">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.android.vending.BILLING" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/MyTheme">
+
+        <activity android:name="com.ravendmaster.onecore.activity.MainActivity">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+
+                <data android:mimeType="*/*" />
+                <data android:pathPattern=".*\\.linear" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="file" />
+                <data android:mimeType="*/*" />
+
+                <data android:pathPattern=".*\\..*\\.linear" />
+
+            </intent-filter>
+
+
+        </activity>
+        <activity android:name="com.ravendmaster.onecore.activity.WidgetEditorActivity" />
+        <activity android:name="com.ravendmaster.onecore.activity.ConnectionSettingsActivity" />
+
+        <service
+            android:name="com.ravendmaster.onecore.service.MQTTService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <receiver android:name="com.ravendmaster.onecore.service.Autostart">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name="com.ravendmaster.onecore.activity.TabsActivity" />
+        <activity android:name="com.ravendmaster.onecore.activity.OpenFileActivity" />
+        <activity android:name="com.ravendmaster.onecore.activity.CodeEditorActivity" />
+        <activity android:name="com.ravendmaster.onecore.activity.DevicesActivity" />
+
+    </application>
+
+
+
+
+</manifest>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/device_edit"
+        android:title="Edit description..." />
+
+    <item
+        android:id="@+id/device_program_code"
+        android:title="Program code..." />
+
+    <item
+        android:id="@+id/device_remove"
+        android:title="Remove" />
+
+</menu>
