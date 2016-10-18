@@ -26,12 +26,12 @@ import com.woxthebox.draglistview.DragItemAdapter;
 
 import java.util.ArrayList;
 
-public class ItemAdapter extends DragItemAdapter<Pair<Long, WidgetData>, ItemAdapter.ViewHolder> {
+class ItemAdapter extends DragItemAdapter<Pair<Long, WidgetData>, ItemAdapter.ViewHolder> {
 
     private int mLayoutId;
     private int mGrabHandleId;
 
-    public ItemAdapter(ArrayList<Pair<Long, WidgetData>> list, int layoutId, int grabHandleId, boolean dragOnLongPress) {
+    ItemAdapter(ArrayList<Pair<Long, WidgetData>> list, int layoutId, int grabHandleId, boolean dragOnLongPress) {
         super(dragOnLongPress);
         mLayoutId = layoutId;
         mGrabHandleId = grabHandleId;
@@ -314,18 +314,18 @@ public class ItemAdapter extends DragItemAdapter<Pair<Long, WidgetData>, ItemAda
         return mItemList.get(position).first;
     }
 
-    public class ViewHolder extends DragItemAdapter<Pair<Long, WidgetData>, ItemAdapter.ViewHolder>.ViewHolder {
-        public View mRoot;
-        public TextView mWidgetName;
-        public TextView mWidgetTopic;
-        public TextView mWidgetValue;
-        public TextView mWidgetValue1;
-        public TextView mWidgetValue2;
-        public TextView mWidgetValue3;
+    class ViewHolder extends DragItemAdapter<Pair<Long, WidgetData>, ItemAdapter.ViewHolder>.ViewHolder {
+        View mRoot;
+        TextView mWidgetName;
+        TextView mWidgetTopic;
+        TextView mWidgetValue;
+        TextView mWidgetValue1;
+        TextView mWidgetValue2;
+        TextView mWidgetValue3;
 
-        public Graph mWidgetGraph;
-        public Meter mWidgetMeter;
-        public Switch mWidgetSwitch;
+        Graph mWidgetGraph;
+        Meter mWidgetMeter;
+        Switch mWidgetSwitch;
         MyButton mWidgetButton;
         RGBLEDView mWidgetRGBLED;
         LinearLayout mWidgetSeekBarGroup;
@@ -336,9 +336,9 @@ public class ItemAdapter extends DragItemAdapter<Pair<Long, WidgetData>, ItemAda
         ImageView mWidgetComboBoxSelector;
         ImageView mWidgetJS;
 
-        public ViewHolder(final View itemView) {
+        ViewHolder(final View itemView) {
             super(itemView, mGrabHandleId);
-            mRoot = (View) itemView.findViewById(R.id.root);
+            mRoot = itemView.findViewById(R.id.root);
             mWidgetName = (TextView) itemView.findViewById(R.id.widget_name);
             mWidgetTopic = (TextView) itemView.findViewById(R.id.widget_topic);
             mWidgetValue = (TextView) itemView.findViewById(R.id.widget_value);
