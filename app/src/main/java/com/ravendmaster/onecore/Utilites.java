@@ -79,6 +79,8 @@ public class Utilites {
             ((Graph) dragView.findViewById(R.id.widget_graph)).setName(i, ((Graph) clickedView.findViewById(R.id.widget_graph)).getName(i));
         }
 
+
+
         ((Graph) dragView.findViewById(R.id.widget_graph)).setMode(((Graph) clickedView.findViewById(R.id.widget_graph)).getMode());
 
         dragView.findViewById(R.id.imageView_combo_box_selector).setVisibility((clickedView.findViewById(R.id.imageView_combo_box_selector)).getVisibility());

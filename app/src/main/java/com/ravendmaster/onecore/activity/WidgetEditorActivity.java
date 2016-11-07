@@ -461,6 +461,7 @@ public class WidgetEditorActivity extends AppCompatActivity implements View.OnCl
                 additional_value3_group.setVisibility(additionalValue3Visible);
 
                 topic_group.setVisibility(widgetType == WidgetData.WidgetTypes.HEADER ? View.GONE : View.VISIBLE);
+                on_receive_codes_group.setVisibility(widgetType == WidgetData.WidgetTypes.HEADER ? View.GONE : View.VISIBLE);
 
                 spinner_widget_mode.setVisibility(modeVisibility);
 

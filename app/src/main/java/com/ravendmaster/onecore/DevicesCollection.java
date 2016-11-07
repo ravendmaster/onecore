@@ -28,6 +28,16 @@ public class DevicesCollection {
         return null;
     }
 
+    public String getDeviceNameByID(int id) {
+
+        for (Device device : items) {
+            if (device.id == id) {
+                return device.name;
+            }
+        }
+        return null;
+    }
+
     public int getFreeId() {
         int maxId = 0;
         for (Device device : items) {

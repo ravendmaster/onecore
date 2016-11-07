@@ -83,7 +83,7 @@ class ItemAdapter extends DragItemAdapter<Pair<Long, WidgetData>, ItemAdapter.Vi
 
         //TextView topicView = (TextView) convertView.findViewById(R.id.widget_topic);
         holder.mWidgetTopic.setVisibility(presenter.isEditMode() && (widget.type != WidgetData.WidgetTypes.HEADER) ? View.VISIBLE : View.GONE);
-        holder.mWidgetTopic.setText(widget.getTopic(0));
+        holder.mWidgetTopic.setText(presenter.getDevices().getDeviceNameByID(widget.deviceId)+": "+widget.getTopic(0));
 
 
         holder.mWidgetMeter.setVisibility(View.GONE);

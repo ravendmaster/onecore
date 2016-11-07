@@ -3,21 +3,21 @@
 
     <item
         is-multidex="true"
-        jar="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
-        <dex dex="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_067c8c80fa1b7f5230c710f2a636c8bcf36ae4ea\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="D:\MyDocs\GitHub\onecore\app\libs\mqtt-client-1.13-SNAPSHOT-uber.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
         sha1="baa680464e450dd9ae04aed0205078c1a4fb0dbd">
         <dex dex="D:\MyDocs\GitHub\onecore\app\build\intermediates\transforms\dex\debug\folders\1000\2\mqtt-client-1.13-SNAPSHOT-uber_1c68804f954f1a7c34ee1e96b913c4eb2ee36588\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\MyDocs\GitHub\onecore\app\build\intermediates\exploded-aar\com.squareup.duktape\duktape-android\0.9.5\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="d26cfea56ebdb8e66e97739b7172d0243316bfcb">
+        <dex dex="D:\MyDocs\GitHub\onecore\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.squareup.duktape-duktape-android-0.9.5_ab7250e1a42783159f9f16883f300ecac4e98d13\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -30,57 +30,21 @@
     </item>
     <item
         is-multidex="true"
-        jar="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
-        <dex dex="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_f043973dcdbaa5efe5d8ba602f39ab76569ed52d\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\exploded-aar\com.github.woxthebox\draglistview\1.2.8\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="e0b1c8be5f389e8468611dc32fb2a953a9624c99">
-        <dex dex="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.github.woxthebox-draglistview-1.2.8_5af2d0b93eb04621ae4e2c53a06f111782dabad5\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.2.1\jars\classes.jar"
+        jar="D:\MyDocs\GitHub\onecore\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.2.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
         sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
-        <dex dex="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-24.2.1_2f396883ade55dc4798c1a99df66343c825106a4\classes.dex" />
+        <dex dex="D:\MyDocs\GitHub\onecore\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-24.2.1_157cb65c0bc9e17163eade54ad481741eafddcce\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\24.2.1\jars\classes.jar"
+        jar="D:\MyDocs\GitHub\onecore\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\24.2.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
-        <dex dex="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-24.2.1_fc577432435e14e8fc520bac99a4685efbf29cb0\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
-        <dex dex="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-24.2.1_c15b10ce65fb088e5671799583d70f35564712e7\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
-        <dex dex="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-24.2.1_482f7319dc402f977fcc24528556ab2631111810\classes.dex" />
+        sha1="c5e6490573cd2cc8018417f60ddd251138b6ed61">
+        <dex dex="D:\MyDocs\GitHub\onecore\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-cardview-v7-24.2.1_8da6a7e4fb77500f31c5ca84a05edda04c8332b2\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -97,7 +61,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="2ad829306637ef2c2b4fd149ecef786d704f06b6">
+        sha1="680d5bb986c527f68360ac3ea2f6759dbca86a22">
         <dex dex="D:\MyDocs\GitHub\onecore\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_808164e96d52dbe6dc16b9c80b9517d16c7d8711\classes.dex" />
     </item>
     <item
@@ -111,12 +75,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\libs\mqtt-client-1.13-SNAPSHOT-uber.jar"
+        jar="D:\MyDocs\GitHub\onecore\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\libs\internal_impl-24.2.1.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="baa680464e450dd9ae04aed0205078c1a4fb0dbd">
-        <dex dex="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\transforms\dex\debug\folders\1000\2\mqtt-client-1.13-SNAPSHOT-uber_6938a8d19cdb3eabf33f528cc9d90fe938e18726\classes.dex" />
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="D:\MyDocs\GitHub\onecore\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_8d2108bbffdb3b4b55c64b8b66aa0f1a780a834a\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -161,160 +125,7 @@
         optimize="true"
         revision="24.0.2"
         sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
-        <dex dex="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-24.2.1_eeb17d55bc3c4231f2959f92658af670464c9ca0\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
-        <dex dex="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-24.2.1_4de40a440b0fe22f63fc9c51c36ae74172009273\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
-        <dex dex="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_1dee57b5195687f8d6f06bf0772e152a0a201f2e\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\MyDocs\GitHub\onecore\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
-        <dex dex="D:\MyDocs\GitHub\onecore\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_27cc3eb84df07c298f42cc74000ef53828881b94\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\MyDocs\GitHub\onecore\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
-        <dex dex="D:\MyDocs\GitHub\onecore\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_d1b8d5b3614be3edeb4ce269debdafa390bb1a42\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="2fd39d0072d04938ef6e6a2709f00db2d7651fc7">
-        <dex dex="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_bf6fb51af8e1fc633a9a3d3c3ccc6087466a01fd\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="c5e6490573cd2cc8018417f60ddd251138b6ed61">
-        <dex dex="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-cardview-v7-24.2.1_4eda75d8d4a3dff2a1736749fcc32142d8611446\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="8cf53d4ba90cb19ae2b569adbaae18da8ecb093a">
-        <dex dex="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_57946aeb202d799a15a57694885a883d297016b8\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
-        <dex dex="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-24.2.1_36de64911aa683046484d01021414f8351c2a3c4\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
-        <dex dex="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_5456f64f7d4d3feb6c3b6ef4885105a1ea8a0899\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\MyDocs\GitHub\onecore\app\build\intermediates\exploded-aar\com.squareup.duktape\duktape-android\0.9.5\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="d26cfea56ebdb8e66e97739b7172d0243316bfcb">
-        <dex dex="D:\MyDocs\GitHub\onecore\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.squareup.duktape-duktape-android-0.9.5_ab7250e1a42783159f9f16883f300ecac4e98d13\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
-        <dex dex="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-24.2.1_948d9062c1e7f4ee9034f4a4a5947de0e051bbf8\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\MyDocs\GitHub\onecore\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
-        <dex dex="D:\MyDocs\GitHub\onecore\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-24.2.1_157cb65c0bc9e17163eade54ad481741eafddcce\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\MyDocs\GitHub\onecore\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="c5e6490573cd2cc8018417f60ddd251138b6ed61">
-        <dex dex="D:\MyDocs\GitHub\onecore\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-cardview-v7-24.2.1_8da6a7e4fb77500f31c5ca84a05edda04c8332b2\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-24.2.1_f9f8a569cab1e794212a8d4cb1d410cda45e9edd\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="867dad63c33388ff8c7644b236579355036d075f">
-        <dex dex="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_03d10a641023afb19b94ae4b3d5a1472b74418fa\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\exploded-aar\com.squareup.duktape\duktape-android\0.9.5\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="d26cfea56ebdb8e66e97739b7172d0243316bfcb">
-        <dex dex="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.squareup.duktape-duktape-android-0.9.5_5a1a432ddd338968bee0d60f36783676628fbed3\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\MyDocs\GitHub\onecore\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
-        <dex dex="D:\MyDocs\GitHub\onecore\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_8d2108bbffdb3b4b55c64b8b66aa0f1a780a834a\classes.dex" />
+        <dex dex="D:\MyDocs\GitHub\onecore\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-24.2.1_eeb17d55bc3c4231f2959f92658af670464c9ca0\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -349,26 +160,26 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="76f33c6d6818ba7919f635b3923063fc5b9f814f">
+        sha1="cdae335dfccd6f2efbf5c79f4da7d9362d9095b0">
         <dex dex="D:\MyDocs\GitHub\onecore\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_8402547d4bfdb2a16afd367c59c9e49395edf163\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\classes.jar"
+        jar="D:\MyDocs\GitHub\onecore\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\libs\internal_impl-24.2.1.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
-        <dex dex="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-24.2.1_0c3917492721b37ed75726d990756f459c73c9a5\classes.dex" />
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="D:\MyDocs\GitHub\onecore\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_27cc3eb84df07c298f42cc74000ef53828881b94\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.2.1\jars\classes.jar"
+        jar="D:\MyDocs\GitHub\onecore\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
-        <dex dex="D:\MyDocs\GitHub\linear-mqtt-dashboard\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-24.2.1_e10415ecfacd370301a4de897e92a17d25576875\classes.dex" />
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="D:\MyDocs\GitHub\onecore\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_d1b8d5b3614be3edeb4ce269debdafa390bb1a42\classes.dex" />
     </item>
     <item
         is-multidex="true"

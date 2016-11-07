@@ -42,7 +42,7 @@
             android:layout_gravity="center_vertical"
             android:paddingLeft="10dp"
             android:paddingRight="4dp"
-            android:text="@string/mqtt_status"
+            android:text="@string/connection_status"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textSize="14sp" />
 

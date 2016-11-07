@@ -138,7 +138,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingTop="10dp"
-                    android:text="Name 2"
+                    android:text="Name #2"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
 
                 <EditText
@@ -159,7 +159,7 @@
                     android:id="@+id/textView_topic1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Topic 2"
+                    android:text="Pin #2"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
 
                 <EditText
@@ -548,7 +548,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="OnReceive()"
                         android:id="@+id/textView_codeOnReceive" />
 
@@ -585,7 +585,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="OnShow()"
                         android:id="@+id/textView_codeOnShow" />
 

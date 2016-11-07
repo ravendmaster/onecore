@@ -37,6 +37,11 @@ public class Presenter {
 
     MQTTService mqttService;
 
+
+    public void requestRefreshGraphData(WidgetData widgetData){
+        mqttService.requestRefreshGraphData(widgetData);
+    }
+
     public void OnClickHelp(AppCompatActivity activity, View helpView) {
 
         String file = "";
@@ -353,8 +358,6 @@ public class Presenter {
                 return;
             }
         }
-
-        //mqttService.getDashboardByID(getActiveDashboardId()).getWidgetsList().remove(widgetData);
     }
 
     public ArrayList<WidgetData> getWidgetsList() {
@@ -393,13 +396,10 @@ public class Presenter {
 
     public void setCurrentMQTTValue(String topic, String value) {
         mqttService.getCurrentMQTTValues().put(topic, value);
-        //startPayloadChangedNotification(topic);
     }
-
 
     static boolean editMode = false;
 
-    //Timer mDashboardRefreshTimer;
     boolean mActiveMode;
 
     Timer mTimerRefreshMQTTConnectionStatus;
@@ -419,9 +419,6 @@ public class Presenter {
         service_intent.setAction("pause");
         view.getAppCompatActivity().startService(service_intent);
 
-        //mDashboardRefreshTimer.cancel();
-        //mDashboardRefreshTimer = null;
-
         mTimerRefreshMQTTConnectionStatus.cancel();
         mTimerRefreshMQTTConnectionStatus = null;
 
@@ -429,7 +426,6 @@ public class Presenter {
     }
 
     public void onDestroy(AppCompatActivity appCompatActivity) {
-        //runForBackgroundMode();
     }
 
     public void onResume(final AppCompatActivity appCompatActivity) {
@@ -441,14 +437,6 @@ public class Presenter {
         appCompatActivity.startService(service_intent);
         mqttService = MQTTService.getInstance();
         Log.d(getClass().getName(), "mqttService=MQTTService.getInstance()=" + mqttService);
-
-
-        if (mqttService != null) {
-            //SharedPreferences sprefs = appCompatActivity.getPreferences(appCompatActivity.MODE_PRIVATE);
-            //String oldData = sprefs.getString("dashboard", "");
-            //createDashboardsBySettings(appCompatActivity.getBaseContext());
-        }
-
 
         handlerNeedRefreshDashboard = new Handler() {
             public void handleMessage(android.os.Message msg) {
@@ -491,7 +479,6 @@ public class Presenter {
                     startPayloadChangedNotification(topic);
                 }
             };
-            //Log.d("test2", "setChangesReceiver(this);");
             mqttService.setPayLoadChangeHandler(handlerPayloadChanged);
         }
 
@@ -499,11 +486,7 @@ public class Presenter {
 
     //обход виджетов в поисках подписки на изменения для оповещения
     void startPayloadChangedNotification(String topic) {
-        //Log.d("test", "new payload for topic:"+topic);
-        //Log.d("refresh dash", "start for topic:"+topic);
 
-        int dashboardsCount = mqttService.dashboards.size();
-        //for (int tabIndex = 0; tabIndex < dashboardsCount; tabIndex++) {
         int tabIndex = 0;
         for (TabData tabData : getTabs().getItems()) {
 
@@ -514,12 +497,14 @@ public class Presenter {
             int index = 0;
 
             for (WidgetData widgetData : widgetsList) {
+
                 boolean needNotify = false;
                 for (int i = 0; i < 4; i++) {
                     String topic_widget = mqttService.getRootTopicPathForReceive(widgetData) + widgetData.getTopic(i);
                     //if (widgetData.type == WidgetData.WidgetTypes.GRAPH && widgetData.mode != Graph.WITHOUT_HISTORY && !topic_widget.isEmpty()) {
                     topic_widget += widgetData.getTopicSuffix();//Graph.HISTORY_TOPIC_SUFFIX;
                     //}
+
                     if (topic_widget != null && topic_widget.equals(topic) && !widgetData.noUpdate) {
                         if ((widgetData.type == WidgetData.WidgetTypes.BUTTONSSET) && !widgetData.retained) {
                             //не обновляем
@@ -677,6 +662,7 @@ public class Presenter {
         Switch widget_switch = (Switch) view;
         String newValue = widget_switch.isChecked() ? widget.publishValue : widget.publishValue2;
         publishMQTTMessage(getRootTopicPathForSend(widget) + widget.getTopic(0), new Buffer(newValue.getBytes()), true);
+
     }
     //switch
 

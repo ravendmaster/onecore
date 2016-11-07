@@ -8,7 +8,6 @@ import android.graphics.CornerPathEffect;
 import android.graphics.DiscretePathEffect;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.graphics.PathMeasure;
 import android.graphics.Rect;
 import android.os.Build;
 import android.util.AttributeSet;
@@ -16,10 +15,10 @@ import android.util.JsonReader;
 import android.view.MotionEvent;
 import android.view.SoundEffectConstants;
 import android.view.View;
-import android.view.animation.PathInterpolator;
 
 import com.ravendmaster.onecore.Log;
 import com.ravendmaster.onecore.R;
+import com.ravendmaster.onecore.activity.MainActivity;
 import com.ravendmaster.onecore.service.WidgetData;
 
 import java.io.IOException;
@@ -38,6 +37,8 @@ public class Graph extends View {
 
     Paint primary_paint = new Paint();
     Paint secondary_paint = new Paint();
+
+    Paint graph_paint = new Paint();
 
     Rect bounds = new Rect();
 
@@ -110,6 +111,7 @@ public class Graph extends View {
         }
         primary_paint.setAntiAlias(true);
         secondary_paint.setAntiAlias(true);
+        graph_paint.setAntiAlias(true);
 
         secondary_paint.setColor(MyColors.getVeryLtGray());
         //secondary_paint.setStrokeWidth(3);
@@ -133,18 +135,12 @@ public class Graph extends View {
         if (value == null) return;
         this.values[topic_index] = value;
 
-
-
-        //if (topic_index == 0) {
-        //    graphs.clear();
-        //}
-
         if (!value.isEmpty()) {
 
             if (value.charAt(0) == '[') {
                 //historyMode = false;
 
-                for (GraphLine line :graphs){
+                for (GraphLine line : graphs){
                     if(line.topic_index==topic_index){
                         graphs.remove(line);
                         break;
@@ -228,7 +224,7 @@ public class Graph extends View {
                                     jsonReader.endObject();
 
                                     for (GraphLine line_temp : graphs) {
-                                        if (line_temp.period_type == line.period_type) {
+                                        if (line_temp.topic_index==line.topic_index && line_temp.period_type == line.period_type) {
                                             graphs.remove(line_temp);
                                             break;
                                         }
@@ -320,6 +316,14 @@ public class Graph extends View {
         this.submode = submode;
     }
 
+    public ArrayList<GraphLine> getGraphs() {
+        return graphs;
+    }
+
+    public void setGraphs(ArrayList<GraphLine> graphs) {
+        this.graphs = graphs;
+    }
+
     class GraphLine {
         private ArrayList<Float> data;
 
@@ -377,7 +381,7 @@ public class Graph extends View {
         }
     }
 
-    ArrayList<GraphLine> graphs = new ArrayList<>();
+    private ArrayList<GraphLine> graphs = new ArrayList<>();
 
     final static int hour_in_ms = 3600;
     final static int minute_in_ms = 60;
@@ -405,20 +409,20 @@ public class Graph extends View {
 
     void nextPeriodType() {
         if (mode < PERIOD_TYPE_1_HOUR) return;
-
         if (mode == PERIOD_TYPE_1_MOUNT) return;
         mode++;
         WidgetData widgetData = (WidgetData) this.getTag();
         widgetData.mode = mode;
+        MainActivity.presenter.requestRefreshGraphData(widgetData);
     }
 
     void previousPeriodType() {
         if (mode < PERIOD_TYPE_1_HOUR) return;
-
         if (mode == PERIOD_TYPE_1_HOUR) return;
         mode--;
         WidgetData widgetData = (WidgetData) this.getTag();
         widgetData.mode = mode;
+        MainActivity.presenter.requestRefreshGraphData(widgetData);
     }
 
     void nextSubMode() {
@@ -744,16 +748,17 @@ public class Graph extends View {
         }
 
 
-        primary_paint.setStrokeWidth(3 * density_multi);
-        primary_paint.setStyle(Paint.Style.STROKE);
-        //primary_paint.setPathEffect(new CornerPathEffect(50));
+        graph_paint.setStrokeWidth(1 * density_multi);
+        graph_paint.setStyle(Paint.Style.STROKE);
+        graph_paint.setPathEffect(new CornerPathEffect(16));
         //primary_paint.setPathEffect(new DiscretePathEffect(10,15));
 
         for (GraphLine line : graphs) {
 
             if (line.period_type != mode) continue;
 
-            primary_paint.setColor(colors[line.getTopicIndex()]);
+            graph_paint.setColor(colors[line.getTopicIndex()]);
+            //primary_paint.setAlpha(127);
 
             Splayn splayn = new Splayn();
             double[] xdata = new double[line.getSize()];
@@ -765,29 +770,33 @@ public class Graph extends View {
             splayn.BuildSpline(xdata, ydata, line.getSize());
 
             Path path = new Path();
-
             float mstep = 1f;
-            path.moveTo(0, graph_height+graph_y_disp);
-            path.moveTo(graph_with, graph_height+graph_y_disp);
-            //float[]linedatas=new float[(int)(line.getSize()*2/mstep)];
-            int linedata_pos = 0;
+            //path.moveTo(0, graph_height+graph_y_disp);
+            //path.lineTo(graph_with, graph_height+graph_y_disp);
+
+            path.moveTo(graph_with+50, graph_height/2);
+
+            //path.lineTo(graph_with, graph_height/2);
+
             for (float i = 0; i < line.getSize(); i += mstep) {
                 //if ((line.getData(i) == null) || (line.getData(i + 1) == null)) continue;
                 int x = graph_x_disp + (int) (graph_with - ((float) i * x_step)) - 4;
                 int y = calcScreenY((float) splayn.f(i), submode != 0 ? line.min : min, submode != 0 ? line.max : max, graph_height) + graph_y_disp;
-                //int y2 = calcScreenY((float)splayn.f(i + mstep), submode != 0 ? line.min : min, submode != 0 ? line.max : max, graph_height) + graph_y_disp;
-
                 path.lineTo(x, y);
-                //linedatas[linedata_pos++]=x;
-                //linedatas[linedata_pos++]=y;
-                //canvas.drawLine(x, y, x - x_step*mstep, y2, primary_paint);
             }
-            canvas.drawPath(path, primary_paint);
+            path.lineTo(-100, graph_height+graph_y_disp);
+            path.lineTo(graph_with, graph_height+graph_y_disp);
 
+            canvas.drawPath(path, graph_paint);
+
+            graph_paint.setAlpha(63);
+            graph_paint.setStyle(Paint.Style.FILL);
+            canvas.drawPath(path, graph_paint);
 
         }
 
-        primary_paint.setStyle(Paint.Style.FILL);
+
+        //primary_paint.setStyle(Paint.Style.FILL);
 
         //шкала значений
         int val_lavel_x = 0;
@@ -833,7 +842,7 @@ public class Graph extends View {
             primary_paint.setColor(colors[i]);
             //float xpos=i*legend_x_step;
             float ypos = graph_y_disp + graph_height + text_label_height / 2 + text_label_height * 0.3f;
-            canvas.drawLine(xpos, ypos, xpos + 30, ypos, primary_paint);
+            canvas.drawLine(xpos, ypos, xpos + 30, ypos, graph_paint);
             primary_paint.setColor(MyColors.getAsBlack());
             canvas.drawText(names[i], xpos + 40, graph_y_disp + graph_height + text_label_height + text_label_height * 0.3f, primary_paint);
             xpos += legend_x_step;

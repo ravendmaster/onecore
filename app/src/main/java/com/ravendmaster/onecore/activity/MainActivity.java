@@ -172,15 +172,15 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
 
         MenuItem menuItemPlayPause = optionsMenu.findItem(R.id.Edit_play_mode);
 
-        MenuItem menuItemAutoCreateWidgets = optionsMenu.findItem(R.id.auto_create_widgets);
+        //MenuItem menuItemAutoCreateWidgets = optionsMenu.findItem(R.id.auto_create_widgets);
 
         if (presenter.isEditMode()) {
             menuItemPlayPause.setIcon(R.drawable.ic_play);
-            menuItemAutoCreateWidgets.setVisible( presenter.getUnusedTopics().length>0 );
+            //menuItemAutoCreateWidgets.setVisible( presenter.getUnusedTopics().length>0 );
 
         } else {
             menuItemPlayPause.setIcon(R.drawable.ic_pause);
-            menuItemAutoCreateWidgets.setVisible(false);
+            //menuItemAutoCreateWidgets.setVisible(false);
         }
 
         menuItem_add_new_widget.setVisible(presenter.isEditMode());
@@ -236,6 +236,7 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
                 startActivityForResult(intent, WidgetEditMode_CREATE);
                 break;
 
+            /*
             case R.id.auto_create_widgets:
                 if (presenter.getTabs().getItems().size() == 0) {
                     presenter.addNewTab("default");
@@ -247,6 +248,7 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
                 //intent.putExtra("createNew", true);
                 //startActivityForResult(intent, WidgetEditMode_CREATE);
                 break;
+             */
 
             case R.id.connection_settings:
                 intent = new Intent(this, ConnectionSettingsActivity.class);
@@ -793,6 +795,7 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
         mqttBrokerStatusRGBLEDView = (RGBLEDView) findViewById(R.id.mqtt_broker_status_RGBLed);
         connectionStatusRGBLEDView = (RGBLEDView) findViewById(R.id.connection_status_RGBLed);
 
+        checkInputFileAndProcess();
     }
 
     static byte buff[];

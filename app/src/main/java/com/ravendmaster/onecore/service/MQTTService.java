@@ -370,7 +370,7 @@ public class MQTTService extends Service implements CallbackMQTTClient.IMQTTMess
                         appSettings.readFromPrefs(getApplicationContext());
                         //callbackMQTTClient.reConnect(appSettings);
 
-                        if (!appSettings.server_mode) {
+                        if (!appSettings.isServerMode()) {
                             Log.d(getClass().getName(), "Go to the background.");
                             if (appSettings.connection_in_background && !appSettings.push_notifications_subscribe_topic.isEmpty()) {
                                 if (!isConnected()) {
@@ -410,7 +410,7 @@ public class MQTTService extends Service implements CallbackMQTTClient.IMQTTMess
 
                 while (true) {
 
-                    if ((clientCountsInForeground > 0 || appSettings.server_mode) && db != null && dashboards != null) {
+                    if ((clientCountsInForeground > 0 || appSettings.isServerMode()) && db != null && dashboards != null) {
 
                         topicsForLive = getTopicsForLiveCollect();
 
@@ -595,46 +595,34 @@ public class MQTTService extends Service implements CallbackMQTTClient.IMQTTMess
         return getRootTopicPath(widgetData) + "out/";
     }
 
-
-    ArrayList<String> getAllInteractiveTopics() {
-        ArrayList<String> result = new ArrayList<>();
-        for (Dashboard dashboard : dashboards) {
-            for (WidgetData widgetData : dashboard.getWidgetsList()) {
-                for (int i = 0; i < 4; i++) {
-                    if (!widgetData.getTopic(i).isEmpty()) {
-                        String topic = getRootTopicPath(widgetData) + widgetData.getTopic(i);
-                        if (result.indexOf(topic) == -1) {
-                            result.add(topic);
-                        }
-                    }
-                }
-            }
-        }
-        return result;
-    }
-
     private String getPushTopicRoot() {
         return getUserLevelTopicPath() + "pn/";
     }
 
-    public void subscribeForInteractiveMode(AppSettings appSettings) {
-        callbackMQTTClient.subscribe(getUserLevelTopicPath() + "#");
-        callbackMQTTClient.subscribe(getPushTopicRoot() + "#");
+    public void requestRefreshGraphData(WidgetData widgetDataForUpdate) {
+        AppSettings appSettings = AppSettings.getInstance();
 
-        for (Dashboard dashboard:dashboards){
-            for (WidgetData widgetData :
-                    dashboard.getWidgetsList()) {
-                if(widgetData.type!=WidgetData.WidgetTypes.GRAPH || widgetData.mode<2)continue;
+        for (Dashboard dashboard : dashboards) {
+            for (WidgetData widgetData : dashboard.getWidgetsList()) {
+                if (widgetData.type != WidgetData.WidgetTypes.GRAPH || widgetData.mode < 2)
+                    continue;
+                if (widgetDataForUpdate != null && widgetDataForUpdate != widgetData) continue;
 
-                publishMQTTMessage(appSettings.username+"/requestDataOfGraphics", new Buffer((widgetData.getTopic(0)+","+widgetData.mode).getBytes()), false);
+                publishMQTTMessage(appSettings.username + "/requestDataOfGraphics", new Buffer((widgetData.getTopic(0) + "," + widgetData.mode).getBytes()), false);
             }
 
         }
+    }
 
+    public void subscribeForInteractiveMode(AppSettings appSettings) {
+        callbackMQTTClient.subscribe(getUserLevelTopicPath() + "+/out/#");
+        callbackMQTTClient.subscribe(getPushTopicRoot() + "#");
+
+        requestRefreshGraphData(null);
     }
 
     public void subscribeForBackgroundMode(AppSettings appSettings) {
-        callbackMQTTClient.unsubscribe(getUserLevelTopicPath() + "#");
+        callbackMQTTClient.unsubscribe(getUserLevelTopicPath() + "+/out/#");
         callbackMQTTClient.subscribe(getPushTopicRoot() + "#");
     }
 
@@ -712,7 +700,7 @@ public class MQTTService extends Service implements CallbackMQTTClient.IMQTTMess
 
         //showNotifyStatus(appSettings.push_notifications_subscribe_topic, false);
 
-        showNotifyStatus("High energy consumption.", !appSettings.server_mode);
+        showNotifyStatus("Running...", false);
 
 
         String rootSubscribeTopic = "";//3.0 appSettings.subscribe_topic.endsWith("#") ? appSettings.subscribe_topic.substring(0, appSettings.subscribe_topic.length() - 1) : appSettings.subscribe_topic;
@@ -725,13 +713,13 @@ public class MQTTService extends Service implements CallbackMQTTClient.IMQTTMess
             db = mDbHelper.getWritableDatabase();
             historyCollector = new HistoryCollector(db);
         }
-        historyCollector.needCollectData = appSettings.server_mode || (clientCountsInForeground > 0);
+        historyCollector.needCollectData = appSettings.isServerMode() || (clientCountsInForeground > 0);
 
         PowerManager pm = (PowerManager) getSystemService(POWER_SERVICE);
         if (wl == null) {
             wl = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, getClass().getName());
         }
-        if (appSettings.server_mode) {
+        if (appSettings.isServerMode()) {
             wl.acquire();
         } else {
             if (wl.isHeld()) {
@@ -761,7 +749,7 @@ public class MQTTService extends Service implements CallbackMQTTClient.IMQTTMess
                 //builder.setAutoCancel(false);
                 //builder.setTicker("text1");
                 .setContentTitle("OneCore")
-                .setContentText("Application server mode is on")
+                //.setContentText("Application server mode is on")
                 .setSmallIcon(R.drawable.ic_playblack)
                 .setContentIntent(pendingIntent)
                 .setOngoing(true).setSubText(text1)
@@ -823,6 +811,10 @@ public class MQTTService extends Service implements CallbackMQTTClient.IMQTTMess
         if (topic == null || topic.equals("") || payload == null) return;
         if (callbackMQTTClient == null) return;
         callbackMQTTClient.publish(topic, payload, retained);
+        if(retained){
+            callbackMQTTClient.publish(topic.replace("/in/","/out/"), payload, retained);
+            //currentMQTTValues.put(topic.replace("/in/","/out/"), payload.toByteBuffer().toString());
+        }
     }
 
     public boolean isConnected() {
@@ -973,8 +965,8 @@ public class MQTTService extends Service implements CallbackMQTTClient.IMQTTMess
 
     //OnReceive()
     void processOnReceiveEvent(String topic, String payload) {
-
-        if (!AppSettings.getInstance().server_mode) return;
+/*
+        if (!AppSettings.getInstance().isServerMode()) return;
 
         for (Dashboard dashboard : dashboards) {
             for (WidgetData widgetData : dashboard.getWidgetsList()) {
@@ -986,12 +978,13 @@ public class MQTTService extends Service implements CallbackMQTTClient.IMQTTMess
                 evalJS(widgetData, payload, code);
             }
         }
+*/
     }
 
 
     private void processReceiveSimplyTopicPayloadData(String topic, String payload) {
 
-        processOnReceiveEvent(topic, payload);
+        //processOnReceiveEvent(topic, payload);
 
         notifyDataInTopicChanged(topic, payload);
 
@@ -1001,7 +994,7 @@ public class MQTTService extends Service implements CallbackMQTTClient.IMQTTMess
         if (topic.startsWith(getPushTopicRoot())) {
             int senderSegmentStart = getPushTopicRoot().length();
             String senderMac = topic.substring(senderSegmentStart, senderSegmentStart + 12);
-            Device deviceSender=AppSettings.getInstance().getDeviceByMac(senderMac);
+            Device deviceSender = AppSettings.getInstance().getDeviceByMac(senderMac);
 
             //Log.d("pn", "Sender: " + senderMac);
             //String notificationTag=topic.substring(senderSegmentStart+13);
@@ -1012,7 +1005,7 @@ public class MQTTService extends Service implements CallbackMQTTClient.IMQTTMess
                 lastReceivedMessagesByTopic.put(topic, payload);
 
                 if (!payload.equals("")) {
-                    showPushNotification(topic, deviceSender!=null?deviceSender.name:"unknown device", payload);
+                    showPushNotification(topic, deviceSender != null ? deviceSender.name : "unknown device", payload);
                 }
             }
 

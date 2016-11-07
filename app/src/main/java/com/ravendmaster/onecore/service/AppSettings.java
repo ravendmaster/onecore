@@ -17,21 +17,25 @@ import java.io.StringReader;
 public class AppSettings {
     private static AppSettings instance;
 
-    public int settingsVersion = 0;
+    int settingsVersion = 0;
 
-    public Boolean adfree;
+    Boolean adfree;
 
-    public String keep_alive;
+    private String keep_alive;
     public String server;
-    public String port;
+    private String port;
     public String username;
     public String password;
-    public String server_topic;
-    public boolean server_mode;
+    String server_topic;
+    private boolean server_mode;
 
-    public String push_notifications_subscribe_topic;
+    boolean isServerMode(){
+        return false;
+    }
 
-    public boolean connection_in_background;
+    String push_notifications_subscribe_topic;
+
+    boolean connection_in_background;
 
     DashboardsConfiguration dashboards;
 
